@@ -114,7 +114,7 @@ public class Cenario5 {
 
 		Collection<EmprestimoConcedido> resultados = Solucao.executa(livros,
 				exemplares, usuarios, emprestimos, devolucoes,
-				hoje.plusDays(61));
+				hoje.plusDays(59));
 
 		Assertions.assertEquals(1, resultados.size());
 
@@ -133,5 +133,7 @@ public class Cenario5 {
 		List<LocalDate> datasPrevistasEsperadas = List.of(previsaoEntrega);
 		Assertions.assertEquals(datasPrevistasEsperadas,
 				datasPrevistasDevolucaoRetornadas);
+
+
 	}
 }

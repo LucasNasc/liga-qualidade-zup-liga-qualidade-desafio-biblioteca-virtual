@@ -34,10 +34,17 @@ public class EmprestimoConcedido {
 	public void registraDevolucao() {
 		this.momentoDevolucao = Instant.now();
 	}
-	
-	
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
 	public Optional<Instant> getMomentoDevolucao(){
 		return Optional.ofNullable(this.momentoDevolucao);
+	}
+
+	public LocalDate getDataPrevistaDevolucao() {
+		return dataPrevistaDevolucao;
 	}
 
 	@Override

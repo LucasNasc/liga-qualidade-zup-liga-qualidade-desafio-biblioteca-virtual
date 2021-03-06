@@ -48,7 +48,7 @@ public class Solucao {
 
         RegistrarEmprestimoService registrarEmprestimoService = new RegistrarEmprestimoService(usuarioRepository, exemplarRepository, emprestimoConcedidoRepository);
         if (!emprestimos.isEmpty()) {
-            registrarEmprestimoService.registrar(emprestimos);
+            registrarEmprestimoService.registrar(emprestimos, dataParaSerConsideradaNaExpiracao);
         }
 
         DevolverEmprestimoService devolverEmprestimoService = new DevolverEmprestimoService(emprestimoConcedidoRepository);
@@ -57,6 +57,7 @@ public class Solucao {
         }
 
         return emprestimoConcedidoRepository.get();
+
     }
 
 }

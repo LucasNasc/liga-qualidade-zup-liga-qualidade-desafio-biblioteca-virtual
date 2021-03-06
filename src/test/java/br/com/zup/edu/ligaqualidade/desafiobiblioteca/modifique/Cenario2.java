@@ -113,7 +113,7 @@ public class Cenario2 {
 
 		Collection<EmprestimoConcedido> resultados = Solucao.executa(livros,
 				exemplares, usuarios, emprestimos, devolucoes,
-				hoje.plusDays(61));
+				hoje.plusDays(59));
 
 		if (emprestimos.size() != 6) {
 			throw new IllegalStateException("Alberto montou o cenário errado");

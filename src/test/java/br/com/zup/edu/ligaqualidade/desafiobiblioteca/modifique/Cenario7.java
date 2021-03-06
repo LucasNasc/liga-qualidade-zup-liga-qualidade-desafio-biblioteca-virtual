@@ -115,7 +115,7 @@ public class Cenario7 {
 
 		Collection<EmprestimoConcedido> resultados = Solucao.executa(livros,
 				exemplares, usuarios, emprestimos, devolucoes,
-				hoje.plusDays(61));
+				hoje.plusDays(9));
 
 		Assertions.assertTrue(resultados.stream()
 				.filter(r -> r.getMomentoDevolucao().isPresent()).count() == 1);

@@ -27,7 +27,7 @@ public class RegistrarEmprestimoService {
         this.exemplarDisponivelService = new ExemplarDisponivelService(exemplarRepository, emprestimoConcedidoRepository);
     }
 
-    public void registrar(Set<DadosEmprestimo> emprestimos) {
+    public void registrar(Set<DadosEmprestimo> emprestimos, LocalDate dataParaSerConsideradaNaExpiracao) {
 
         for (DadosEmprestimo emprestimo : emprestimos) {
 
@@ -40,11 +40,16 @@ public class RegistrarEmprestimoService {
                 continue;
             }
 
+
             Integer idExemplar = exemplarDisponivelService.getId(emprestimo.idLivro, emprestimo.tipoExemplar);
 
             EmprestimoConcedido emprestimoConcedido = new EmprestimoConcedido(emprestimo.idPedido, emprestimo.idUsuario,
                     idExemplar,
                     LocalDate.now().plusDays(emprestimo.tempo));
+
+            if(Boolean.TRUE.equals(emprestimoConcedidoRepository.verificaUsuarioEmprestimosExpirados(emprestimoConcedido.getIdUsuario(),
+                    dataParaSerConsideradaNaExpiracao)))
+                break;
 
             emprestimoConcedidoRepository.regitrar(emprestimoConcedido);
         }
